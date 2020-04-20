@@ -2,26 +2,42 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
 
-## Development server
+# add firebase uix
+ng add ngx-auth-firebaseui
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# got angular/cdk missing error
+npm i -s @angular/material @angular/cdk @angular/flex-layout @angular/forms @angular/animations @angular/router
+npm i -s firebase @angular/fire
 
-## Code scaffolding
+# add angular material
+ng add @angular/material
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# add angular material-extension / password-strength
+sudo ng add @angular-material-extensions/password-strength
 
-## Build
+# available auth providers. based on ngx-auth-firebaseui/projects/ngx-auth-firebaseui/src/lib/services/auth-process.service.ts
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+at line 26
 
-## Running unit tests
+export enum AuthProvider {
+  ALL = 'all',
+  ANONYMOUS = 'anonymous',
+  EmailAndPassword = 'firebase',
+  Google = 'google',
+  Apple = 'Apple',
+  Facebook = 'facebook',
+  Twitter = 'twitter',
+  Github = 'github',
+  Microsoft = 'microsoft',
+  Yahoo = 'yahoo',
+  PhoneNumber = 'phoneNumber'
+}
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# import the enumeration
+import { AuthProvider } from 'ngx-auth-firebaseui'
 
-## Running end-to-end tests
+# ngx-auth-firebaseui/projects/ngx-auth-firebaseui/src/lib/components/ngx-auth-firebaseui/auth.component.ts
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+at line 67
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+@Input() providers: AuthProvider[] | AuthProvider = AuthProvider.ALL;
